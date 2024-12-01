@@ -1,0 +1,18 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "thiagovedovatto.github.io"
+  navbar:
+    right:
+      - about.qmd
+      - icon: github
+        href: https://github.com/thiagovedovatto
+format:
+  html:
+    theme: default
+    css: styles.css
+
+editor: source
+
