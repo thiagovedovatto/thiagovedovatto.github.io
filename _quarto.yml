@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "thiagovedovatto.github.io"
+  title: "Thiago VedoVatto"
   navbar:
     right:
       - about.qmd
@@ -15,4 +15,3 @@ format:
     css: styles.css
 
 editor: source
-

@@ -1,15 +1,66 @@
 ---
-title: "About"
+title: "Sobre mim"
 image: profile.jpg
 about:
-  template: jolla
+  id: hero-heading
+  template: trestles
+  image-width: 15em
+  image-shape: round
   links:
-    - icon: linkedin
-      text: LinkedIn
-      href: https://linkedin.com/supervedovatto
+    - icon: mailbox
+      text: e-mail
+      href: mailto:thiagovedovatto@gmail.com
     - icon: github
       text: Github
       href: https://github.com/thiagovedovatto
+    - icon: whatsapp
+      text: Whatsapp
+      href: https://wa.me/5562999529997
 ---
 
-About this blog
+:::{#hero-heading}
+
+# Thiago VedoVatto
+
+Professor no Instituto Federal de Educação, Ciência e Tecnologia de Goiás. Com passagens e projetos desenvolvidos em várias universidades como UFG, UFSCar, UnB, UFPE, USP e UFC.
+
+Se precisar de ajuda em suas análises estatísticas, pode contar comigo, ficarei feliz em ajudar.
+
+## Formação Acadêmica
+
+Doutor em Estatística | Universidade Federal de Pernambuco | 2018
+
+Mestre em Estatística | Universidade de Brasília | 2014
+
+Especialista em Matemática Aplicada | Universidade Federal de Goiás | 2011
+
+Especialista em Inteligência Artificial | Instituto Federal de Educação, Ciência e Tecnologia de Goiás | 2024
+
+Licenciatura Plena em Matemática | Universidade Federal de Goiás | 2007
+
+## Experiência Profissional
+
+Instituto Federal de Educação, Ciência e Tecnologia de Goiás | Professor Efetivo | 2013 - Atual
+
+Universidade Federal de Goiás | Professor Substituto | 2010 - 2011
+
+## Habilidades
+
+### Linguagens de Programação e Ferramentas   
+
+- R, RStudio & Tidyverse
+- Python, Jupyter & Pandas
+- Gatsby, Jekyll & Quarto
+- Shell script & Linux
+- LaTeX & TikZ
+- vim/neovim/VSCodium
+
+### Matemática e Estatística
+
+- Estatística Intermediária
+- Equações Diferenciais Aplicadas
+- Probabilidade
+- Inteligência Artificial
+- Métodos Numéricos
+
+:::
