@@ -1,6 +1,6 @@
 ---
-title: "Welcome To My Blog"
-author: "Tristan O'Malley"
+title: "Bem vindo ao meu blog"
+author: "Thiago VedoVatto"
 date: "2024-11-28"
 categories: [news]
 ---

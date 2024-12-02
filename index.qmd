@@ -10,7 +10,3 @@ listing:
 page-layout: full
 title-block-banner: true
 ---
-
-# Meu Blog
-
-Este é o meu blog

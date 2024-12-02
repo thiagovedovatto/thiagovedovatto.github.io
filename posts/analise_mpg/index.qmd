@@ -1,0 +1,102 @@
+---
+title: "Principais bibliotecas de análise de dados do R"
+# author: "Harlow Malloc"
+# date: "2024-12-01"
+categories: [news, code, analysis]
+image: "image.jpg"
+---
+
+# Análise descritiva
+
+Vamos fazer uma análise descritiva do conjunto de dados `mpg` que está contido na biblioteca `ggplot2`. Para realizar essa análise vamos carregar as bibliotecas `tidyverse` e `psych`.
+
+```{r,echo=FALSE}
+library(tidyverse)
+```
+
+As variáveis contidas no conjunto de dados `mpg` podem ser vistas por meio do comando:
+
+```{r}
+colnames(mpg)
+```
+
+Para saber o significado das variáveis podemos recorrer ao comando
+
+```{r}
+help(mpg)
+```
+
+
+É necessário classificar corretamente as variáveis:
+
+```{r}
+mpg <- mpg %>% 
+  mutate(cyl = ordered(cyl,sort(unique(mpg$cyl)))) %>% 
+  mutate(cty = ordered(cty,sort(unique(mpg$cty)))) %>% 
+  mutate(manufacturer = factor(manufacturer)) %>% 
+  mutate(model = factor(model)) %>% 
+  mutate(trans = factor(trans)) %>%
+  mutate(fl = factor(fl)) %>% 
+  mutate(class = factor(class))
+```
+
+Para observar os valores da variável `manufacturer` podemos recorrer ao comando
+
+```{r}
+mpg %>% 
+  select(manufacturer)
+```
+
+```{r}
+mpg %>% 
+  group_by(manufacturer) %>% 
+  summarise(n = n())
+```
+
+```{r}
+mpg %>% 
+  group_by(manufacturer) %>% 
+  summarise(n = n()) %>% 
+  ggplot(aes(x=n, y=manufacturer)) + 
+  geom_bar(stat = "identity")
+```
+
+```{r}
+mpg %>% 
+  group_by(class) %>% 
+  summarise(n = n()) %>% 
+  ggplot(aes(x=n, y=class)) + 
+  geom_bar(stat = "identity")
+```
+
+```{r}
+mpg %>% 
+  group_by(cyl) %>% 
+  summarise(n = n()) %>% 
+  ggplot(aes(x=cyl, y=n)) + 
+  geom_bar(stat = "identity")
+```
+
+```{r}
+mpg %>% 
+  group_by(trans) %>% 
+  summarise(n = n()) %>% 
+  ggplot(aes(x=n, y=trans)) + 
+  geom_bar(stat = "identity")
+```
+
+```{r}
+mpg %>% 
+  group_by(drv) %>% 
+  summarise(n = n()) %>% 
+  ggplot(aes(x=n, y=drv)) + 
+  geom_bar(stat = "identity")
+```
+
+```{r}
+mpg %>% 
+  group_by(drv,cyl) %>% 
+  summarise(n = n()) %>%
+  ggplot(aes(x=n, y=drv, fill=cyl)) + 
+  geom_bar(stat = "identity")
+```
