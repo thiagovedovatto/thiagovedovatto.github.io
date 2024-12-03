@@ -1,0 +1,5 @@
+eq:'diff(y,x) = (1/2)*(y^2 -1);
+ode2(eq,y,x);
+logcontract(%);
+solve(%,y);
+ic1(%, x=0, y=2);

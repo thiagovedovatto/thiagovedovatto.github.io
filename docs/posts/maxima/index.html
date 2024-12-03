@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.313">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Thiago VedoVatto - Usando o máxima para analisar equações diferenciais</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Thiago VedoVatto</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html">
+ <span class="menu-text">Sobre</span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Usando o máxima para analisar equações diferenciais</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">code</div>
+                <div class="quarto-category">analysis</div>
+                <div class="quarto-category">maxima</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://maxima.sourceforge.io/pt/index.html"><img src="maxima.svg" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>O software Maxima é um poderoso sistema de computação algébrica para estudantes de equações diferenciais, oferecendo suporte à resolução de equações diferenciais ordinárias (EDOs), tanto de forma exata quanto numérica. Isso permite ao estudante explorar métodos de solução sem depender exclusivamente de cálculos manuais. Além disso o software é capaz de realizar manipulações algébricas e diferenciação simbólica, ajudando o estudante a entender os passos intermediários de uma solução e a validar cálculos feitos manualmente.</p>
+<p>O software Maxima suporta transformadas de Laplace, uma técnica fundamental para a solução de equações diferenciais, especialmente em aplicações nas áreas de engenharia e física. Ainda é possível criar gráficos em 2D e 3D, facilitando a análise visual das soluções e a compreensão do comportamento dinâmico de sistemas modelados por equações diferenciais. A linguagem Maxima apresente alta precisão e flexibilidade numérica podendo fazer uso de frações exatas, números de precisão arbitrária e números de ponto flutuante com precisão variável, minimizando erros numéricos em cálculos sensíveis.</p>
+<p>Por ser de código aberto, o software Maxima é obtido de forma totalmente gratuito no seu <a href="https://maxima.sourceforge.io/pt/download.html">repositório oficial</a> com versões disponíveis em múltiplos sistemas operacionais, como Windows, Linux e macOS, o que facilita seu acesso para estudantes. Além disso o máxima possui uma <a href="http://www.dma.ufv.br/maxima/index.php">interface online</a> hospedado nos servidores do Departamento de Matemática da Universidade Federal de Viçosa.</p>
+<p>Aprender a usar o software Maxima capacita o estudante a resolver problemas complexos com eficiência, compreender conceitos abstratos por meio de exemplos práticos e se preparar para aplicações mais avançadas. Além disso, o acesso gratuito e a versatilidade da ferramenta tornam-na uma escolha ideal para projetos acadêmicos e estudos independentes.</p>
+<p>Nesse artigo apresento alguns problemas envolvendo equações diferenciais que podem ser facilmente resolvidos com a linguagem máxima:</p>
+<p><strong>Problema 1</strong>: Encontre uma solução da equação diferencial <span class="math inline">\(y' = \dfrac{1}{2}(y^2 -1)\)</span> que satisfaça a condição inicial <span class="math inline">\(y(0) = 2\)</span>.</p>
+<p>Para resolver esse problema de valor inicial (PVI) podemos recorrer ao seguinte script Maxima:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>eq:'diff(y,x) = (1/2)*(y^2 -1);
+ode2(eq,y,x);
+logcontract(%);
+solve(%,y);
+ic1(%, x=0, y=2);</code></pre>
+</div>
+</div>
+<p>Essa sequência de comandos precisa ser executada nessa ordem para que uma solução seja obtida. A seguir apresentamos o log de execução desse script até a obtenção da solução:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>(%i2) eq:'diff(y,x) = (1/2)*(y^2-1)
+                                        2
+                                  dy   y  - 1
+(%o2)                             -- = ------
+                                  dx     2
+(%i3) ode2(eq,y,x)
+(%o3)                  log(y - 1) - log(y + 1) = x + %c
+(%i4) logcontract(%)
+                                  y - 1
+(%o4)                         log(-----) = x + %c
+                                  y + 1
+(%i5) solve(%,y)
+                                      x + %c
+                                    %e       + 1
+(%o5)                        [y = - ------------]
+                                      x + %c
+                                    %e       - 1
+(%i6) ic1(%,x = 0,y = 2)
+                                         x
+                                       %e  + 3
+(%o6)                           [y = - -------]
+                                         x
+                                       %e  - 3</code></pre>
+</div>
+</div>
+<p>Note que após a execução do comando em <code>(%i2)</code> obtemos a primeira saída em <code>(%o2)</code> que representa a equação diferencial apresentada no nosso problema. O segundo comando a ser executado <code>(%i3)</code> tem sua saída apresentada na linha <code>(%o3)</code> onde se encontra a solução da equação diferencial dada:</p>
+<p><span class="math display">\[
+\log(y - 1) - \log(y + 1) = x + c
+\]</span></p>
+<p>Para resolver essa expressão para <span class="math inline">\(y\)</span> foi necessário contrair os logarítmos por meio do comando em <code>(%i4)</code> que resolva na saída <code>(%o4)</code>:</p>
+<p><span class="math display">\[
+\log\left(\dfrac{y-1}{y+1}\right) = x + c
+\]</span></p>
+<p>Na sequência o comando em <code>(%i5)</code> apresenta uma solução na forma explícita para a equação diferencial apresentada. Note que essa solução, como esperado, apresenta uma constante <span class="math inline">\(c\)</span> em aberto, pois não levamos consideração a condição de contorno <span class="math inline">\(y(0) = 2\)</span> enunciada. Para obtermos o valor da constante <span class="math inline">\(c\)</span> que satizfaz o PVI usamos o comando apresentado em <code>(%i4)</code> que apresenta como solução a função:</p>
+<p><span class="math display">\[
+y = - \dfrac{e^x+3}{e^x-3}
+\]</span></p>
+<div class="cell">
+
+</div>
+<section id="referências-bibliográficas" class="level1">
+<h1>Referências Bibliográficas</h1>
+<section id="em-português" class="level2">
+<h2 class="anchored" data-anchor-id="em-português">Em português</h2>
+<p><a href="https://maxima.sourceforge.io/pt/documentation.html">Manuais do Maxima</a> | Página Oficial do Máxima</p>
+<p><a href="http://www.professores.im-uff.mat.br/hjbortol/disciplinas/2006.2/esp00000/arquivos/maxima_pt.pdf">Manual não Oficial do Máxima</a> | UFF</p>
+<p><a href="https://www.ufsm.br/app/uploads/sites/783/2020/02/apostila_software_wxmaxima.pdf">Apostila de Máxima</a> | Grupo PET Matemática da UFSM</p>
+<p><a href="https://mat.ufpb.br/sergio/softwares/maxima/Tutorial-wxmaxima.pdf">O Emprego do Software Maxima no Apoio ao Ensino da Matematica</a> | UFPB</p>
+</section>
+<section id="em-inglês" class="level2">
+<h2 class="anchored" data-anchor-id="em-inglês">Em inglês</h2>
+<p><a href="https://maxima.sourceforge.io/ext/maxima.pdf">Manual Oficial</a> | Repositório Oficial</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

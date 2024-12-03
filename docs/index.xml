@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>feed rss do professor Thiago VedoVatto</title>
+<link>https://thiagovedovatto.github.io/index.html</link>
+<atom:link href="https://thiagovedovatto.github.io/index.xml" rel="self" type="application/rss+xml"/>
+<description></description>
+<generator>quarto-1.2.313</generator>
+<lastBuildDate>Tue, 03 Dec 2024 19:11:45 GMT</lastBuildDate>
+<item>
+  <title>Usando o máxima para analisar equações diferenciais</title>
+  <link>https://thiagovedovatto.github.io/posts/maxima/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://maxima.sourceforge.io/pt/index.html"><img src="https://thiagovedovatto.github.io/posts/maxima/maxima.svg" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>O software Maxima é um poderoso sistema de computação algébrica para estudantes de equações diferenciais, oferecendo suporte à resolução de equações diferenciais ordinárias (EDOs), tanto de forma exata quanto numérica. Isso permite ao estudante explorar métodos de solução sem depender exclusivamente de cálculos manuais. Além disso o software é capaz de realizar manipulações algébricas e diferenciação simbólica, ajudando o estudante a entender os passos intermediários de uma solução e a validar cálculos feitos manualmente.</p>
+<p>O software Maxima suporta transformadas de Laplace, uma técnica fundamental para a solução de equações diferenciais, especialmente em aplicações nas áreas de engenharia e física. Ainda é possível criar gráficos em 2D e 3D, facilitando a análise visual das soluções e a compreensão do comportamento dinâmico de sistemas modelados por equações diferenciais. A linguagem Maxima apresente alta precisão e flexibilidade numérica podendo fazer uso de frações exatas, números de precisão arbitrária e números de ponto flutuante com precisão variável, minimizando erros numéricos em cálculos sensíveis.</p>
+<p>Por ser de código aberto, o software Maxima é obtido de forma totalmente gratuito no seu <a href="https://maxima.sourceforge.io/pt/download.html">repositório oficial</a> com versões disponíveis em múltiplos sistemas operacionais, como Windows, Linux e macOS, o que facilita seu acesso para estudantes. Além disso o máxima possui uma <a href="http://www.dma.ufv.br/maxima/index.php">interface online</a> hospedado nos servidores do Departamento de Matemática da Universidade Federal de Viçosa.</p>
+<p>Aprender a usar o software Maxima capacita o estudante a resolver problemas complexos com eficiência, compreender conceitos abstratos por meio de exemplos práticos e se preparar para aplicações mais avançadas. Além disso, o acesso gratuito e a versatilidade da ferramenta tornam-na uma escolha ideal para projetos acadêmicos e estudos independentes.</p>
+<p>Nesse artigo apresento alguns problemas envolvendo equações diferenciais que podem ser facilmente resolvidos com a linguagem máxima:</p>
+<p><strong>Problema 1</strong>: Encontre uma solução da equação diferencial <img src="https://latex.codecogs.com/png.latex?y'%20=%20%5Cdfrac%7B1%7D%7B2%7D(y%5E2%20-1)"> que satisfaça a condição inicial <img src="https://latex.codecogs.com/png.latex?y(0)%20=%202">.</p>
+<p>Para resolver esse problema de valor inicial (PVI) podemos recorrer ao seguinte script Maxima:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>eq:'diff(y,x) = (1/2)*(y^2 -1);
+ode2(eq,y,x);
+logcontract(%);
+solve(%,y);
+ic1(%, x=0, y=2);</code></pre>
+</div>
+</div>
+<p>Essa sequência de comandos precisa ser executada nessa ordem para que uma solução seja obtida. A seguir apresentamos o log de execução desse script até a obtenção da solução:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>(%i2) eq:'diff(y,x) = (1/2)*(y^2-1)
+                                        2
+                                  dy   y  - 1
+(%o2)                             -- = ------
+                                  dx     2
+(%i3) ode2(eq,y,x)
+(%o3)                  log(y - 1) - log(y + 1) = x + %c
+(%i4) logcontract(%)
+                                  y - 1
+(%o4)                         log(-----) = x + %c
+                                  y + 1
+(%i5) solve(%,y)
+                                      x + %c
+                                    %e       + 1
+(%o5)                        [y = - ------------]
+                                      x + %c
+                                    %e       - 1
+(%i6) ic1(%,x = 0,y = 2)
+                                         x
+                                       %e  + 3
+(%o6)                           [y = - -------]
+                                         x
+                                       %e  - 3</code></pre>
+</div>
+</div>
+<p>Note que após a execução do comando em <code>(%i2)</code> obtemos a primeira saída em <code>(%o2)</code> que representa a equação diferencial apresentada no nosso problema. O segundo comando a ser executado <code>(%i3)</code> tem sua saída apresentada na linha <code>(%o3)</code> onde se encontra a solução da equação diferencial dada:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Clog(y%20-%201)%20-%20%5Clog(y%20+%201)%20=%20x%20+%20c%0A"></p>
+<p>Para resolver essa expressão para <img src="https://latex.codecogs.com/png.latex?y"> foi necessário contrair os logarítmos por meio do comando em <code>(%i4)</code> que resolva na saída <code>(%o4)</code>:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Clog%5Cleft(%5Cdfrac%7By-1%7D%7By+1%7D%5Cright)%20=%20x%20+%20c%0A"></p>
+<p>Na sequência o comando em <code>(%i5)</code> apresenta uma solução na forma explícita para a equação diferencial apresentada. Note que essa solução, como esperado, apresenta uma constante <img src="https://latex.codecogs.com/png.latex?c"> em aberto, pois não levamos consideração a condição de contorno <img src="https://latex.codecogs.com/png.latex?y(0)%20=%202"> enunciada. Para obtermos o valor da constante <img src="https://latex.codecogs.com/png.latex?c"> que satizfaz o PVI usamos o comando apresentado em <code>(%i4)</code> que apresenta como solução a função:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0Ay%20=%20-%20%5Cdfrac%7Be%5Ex+3%7D%7Be%5Ex-3%7D%0A"></p>
+<div class="cell">
+
+</div>
+<section id="referências-bibliográficas" class="level1">
+<h1>Referências Bibliográficas</h1>
+<section id="em-português" class="level2">
+<h2 class="anchored" data-anchor-id="em-português">Em português</h2>
+<p><a href="https://maxima.sourceforge.io/pt/documentation.html">Manuais do Maxima</a> | Página Oficial do Máxima</p>
+<p><a href="http://www.professores.im-uff.mat.br/hjbortol/disciplinas/2006.2/esp00000/arquivos/maxima_pt.pdf">Manual não Oficial do Máxima</a> | UFF</p>
+<p><a href="https://www.ufsm.br/app/uploads/sites/783/2020/02/apostila_software_wxmaxima.pdf">Apostila de Máxima</a> | Grupo PET Matemática da UFSM</p>
+<p><a href="https://mat.ufpb.br/sergio/softwares/maxima/Tutorial-wxmaxima.pdf">O Emprego do Software Maxima no Apoio ao Ensino da Matematica</a> | UFPB</p>
+</section>
+<section id="em-inglês" class="level2">
+<h2 class="anchored" data-anchor-id="em-inglês">Em inglês</h2>
+<p><a href="https://maxima.sourceforge.io/ext/maxima.pdf">Manual Oficial</a> | Repositório Oficial</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>code</category>
+  <category>analysis</category>
+  <category>maxima</category>
+  <guid>https://thiagovedovatto.github.io/posts/maxima/index.html</guid>
+  <pubDate>Tue, 03 Dec 2024 19:11:45 GMT</pubDate>
+  <media:content url="https://thiagovedovatto.github.io/posts/maxima/maxima.svg" medium="image" type="image/svg+xml"/>
+</item>
+<item>
+  <title>Principais bibliotecas de análise de dados do R</title>
+  <link>https://thiagovedovatto.github.io/posts/analise_mpg/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="análise-descritiva" class="level1">
+<h1>Análise descritiva</h1>
+<p>Vamos fazer uma análise descritiva do conjunto de dados <code>mpg</code> que está contido na biblioteca <code>ggplot2</code>. Para realizar essa análise vamos carregar as bibliotecas <code>tidyverse</code> e <code>psych</code>.</p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+</div>
+<p>As variáveis contidas no conjunto de dados <code>mpg</code> podem ser vistas por meio do comando:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;">colnames</span>(mpg)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "manufacturer" "model"        "displ"        "year"         "cyl"         
+ [6] "trans"        "drv"          "cty"          "hwy"          "fl"          
+[11] "class"       </code></pre>
+</div>
+</div>
+<p>Para saber o significado das variáveis podemos recorrer ao comando</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;">help</span>(mpg)</span></code></pre></div>
+</div>
+<p>É necessário classificar corretamente as variáveis:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">mpg <span class="ot" style="color: #003B4F;">&lt;-</span> mpg <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb5-2">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">cyl =</span> <span class="fu" style="color: #4758AB;">ordered</span>(cyl,<span class="fu" style="color: #4758AB;">sort</span>(<span class="fu" style="color: #4758AB;">unique</span>(mpg<span class="sc" style="color: #5E5E5E;">$</span>cyl)))) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb5-3">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">cty =</span> <span class="fu" style="color: #4758AB;">ordered</span>(cty,<span class="fu" style="color: #4758AB;">sort</span>(<span class="fu" style="color: #4758AB;">unique</span>(mpg<span class="sc" style="color: #5E5E5E;">$</span>cty)))) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb5-4">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">manufacturer =</span> <span class="fu" style="color: #4758AB;">factor</span>(manufacturer)) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb5-5">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">model =</span> <span class="fu" style="color: #4758AB;">factor</span>(model)) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb5-6">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">trans =</span> <span class="fu" style="color: #4758AB;">factor</span>(trans)) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb5-7">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">fl =</span> <span class="fu" style="color: #4758AB;">factor</span>(fl)) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb5-8">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">class =</span> <span class="fu" style="color: #4758AB;">factor</span>(class))</span></code></pre></div>
+</div>
+<p>Para observar os valores da variável <code>manufacturer</code> podemos recorrer ao comando</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">mpg <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb6-2">  <span class="fu" style="color: #4758AB;">select</span>(manufacturer)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 234 × 1
+   manufacturer
+   &lt;fct&gt;       
+ 1 audi        
+ 2 audi        
+ 3 audi        
+ 4 audi        
+ 5 audi        
+ 6 audi        
+ 7 audi        
+ 8 audi        
+ 9 audi        
+10 audi        
+# ℹ 224 more rows</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1">mpg <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb8-2">  <span class="fu" style="color: #4758AB;">group_by</span>(manufacturer) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb8-3">  <span class="fu" style="color: #4758AB;">summarise</span>(<span class="at" style="color: #657422;">n =</span> <span class="fu" style="color: #4758AB;">n</span>())</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 15 × 2
+   manufacturer     n
+   &lt;fct&gt;        &lt;int&gt;
+ 1 audi            18
+ 2 chevrolet       19
+ 3 dodge           37
+ 4 ford            25
+ 5 honda            9
+ 6 hyundai         14
+ 7 jeep             8
+ 8 land rover       4
+ 9 lincoln          3
+10 mercury          4
+11 nissan          13
+12 pontiac          5
+13 subaru          14
+14 toyota          34
+15 volkswagen      27</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">mpg <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb10-2">  <span class="fu" style="color: #4758AB;">group_by</span>(manufacturer) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb10-3">  <span class="fu" style="color: #4758AB;">summarise</span>(<span class="at" style="color: #657422;">n =</span> <span class="fu" style="color: #4758AB;">n</span>()) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb10-4">  <span class="fu" style="color: #4758AB;">ggplot</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">x=</span>n, <span class="at" style="color: #657422;">y=</span>manufacturer)) <span class="sc" style="color: #5E5E5E;">+</span> </span>
+<span id="cb10-5">  <span class="fu" style="color: #4758AB;">geom_bar</span>(<span class="at" style="color: #657422;">stat =</span> <span class="st" style="color: #20794D;">"identity"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://thiagovedovatto.github.io/posts/analise_mpg/index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1">mpg <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb11-2">  <span class="fu" style="color: #4758AB;">group_by</span>(class) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb11-3">  <span class="fu" style="color: #4758AB;">summarise</span>(<span class="at" style="color: #657422;">n =</span> <span class="fu" style="color: #4758AB;">n</span>()) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb11-4">  <span class="fu" style="color: #4758AB;">ggplot</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">x=</span>n, <span class="at" style="color: #657422;">y=</span>class)) <span class="sc" style="color: #5E5E5E;">+</span> </span>
+<span id="cb11-5">  <span class="fu" style="color: #4758AB;">geom_bar</span>(<span class="at" style="color: #657422;">stat =</span> <span class="st" style="color: #20794D;">"identity"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://thiagovedovatto.github.io/posts/analise_mpg/index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1">mpg <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb12-2">  <span class="fu" style="color: #4758AB;">group_by</span>(cyl) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb12-3">  <span class="fu" style="color: #4758AB;">summarise</span>(<span class="at" style="color: #657422;">n =</span> <span class="fu" style="color: #4758AB;">n</span>()) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb12-4">  <span class="fu" style="color: #4758AB;">ggplot</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">x=</span>cyl, <span class="at" style="color: #657422;">y=</span>n)) <span class="sc" style="color: #5E5E5E;">+</span> </span>
+<span id="cb12-5">  <span class="fu" style="color: #4758AB;">geom_bar</span>(<span class="at" style="color: #657422;">stat =</span> <span class="st" style="color: #20794D;">"identity"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://thiagovedovatto.github.io/posts/analise_mpg/index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1">mpg <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb13-2">  <span class="fu" style="color: #4758AB;">group_by</span>(trans) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb13-3">  <span class="fu" style="color: #4758AB;">summarise</span>(<span class="at" style="color: #657422;">n =</span> <span class="fu" style="color: #4758AB;">n</span>()) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb13-4">  <span class="fu" style="color: #4758AB;">ggplot</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">x=</span>n, <span class="at" style="color: #657422;">y=</span>trans)) <span class="sc" style="color: #5E5E5E;">+</span> </span>
+<span id="cb13-5">  <span class="fu" style="color: #4758AB;">geom_bar</span>(<span class="at" style="color: #657422;">stat =</span> <span class="st" style="color: #20794D;">"identity"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://thiagovedovatto.github.io/posts/analise_mpg/index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1">mpg <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb14-2">  <span class="fu" style="color: #4758AB;">group_by</span>(drv) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb14-3">  <span class="fu" style="color: #4758AB;">summarise</span>(<span class="at" style="color: #657422;">n =</span> <span class="fu" style="color: #4758AB;">n</span>()) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb14-4">  <span class="fu" style="color: #4758AB;">ggplot</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">x=</span>n, <span class="at" style="color: #657422;">y=</span>drv)) <span class="sc" style="color: #5E5E5E;">+</span> </span>
+<span id="cb14-5">  <span class="fu" style="color: #4758AB;">geom_bar</span>(<span class="at" style="color: #657422;">stat =</span> <span class="st" style="color: #20794D;">"identity"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://thiagovedovatto.github.io/posts/analise_mpg/index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1">mpg <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb15-2">  <span class="fu" style="color: #4758AB;">group_by</span>(drv,cyl) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb15-3">  <span class="fu" style="color: #4758AB;">summarise</span>(<span class="at" style="color: #657422;">n =</span> <span class="fu" style="color: #4758AB;">n</span>()) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb15-4">  <span class="fu" style="color: #4758AB;">ggplot</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">x=</span>n, <span class="at" style="color: #657422;">y=</span>drv, <span class="at" style="color: #657422;">fill=</span>cyl)) <span class="sc" style="color: #5E5E5E;">+</span> </span>
+<span id="cb15-5">  <span class="fu" style="color: #4758AB;">geom_bar</span>(<span class="at" style="color: #657422;">stat =</span> <span class="st" style="color: #20794D;">"identity"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'drv'. You can override using the `.groups`
+argument.</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="https://thiagovedovatto.github.io/posts/analise_mpg/index_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+
+
+</section>
+
+ ]]></description>
+  <category>code</category>
+  <category>analysis</category>
+  <category>R</category>
+  <guid>https://thiagovedovatto.github.io/posts/analise_mpg/index.html</guid>
+  <pubDate>Tue, 03 Dec 2024 19:11:45 GMT</pubDate>
+  <media:content url="https://thiagovedovatto.github.io/posts/analise_mpg/image.jpg" medium="image" type="image/jpeg"/>
+</item>
+</channel>
+</rss>

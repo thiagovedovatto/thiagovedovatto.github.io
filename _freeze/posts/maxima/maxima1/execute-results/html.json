@@ -1,0 +1,11 @@
+{
+  "hash": "fc24039b3b836eac3a477166b1facf99",
+  "result": {
+    "markdown": "---\ntitle: \"Usando o máxima para operações básicas\"\n---\n\n![Máxima Logo](maxima.svg)\n\n# Máxima para Equações Diferenciais\n\nNesse breve artigo, apresento alguns problemas envolvendo equações diferenciais que podem ser resolvidos com o uso do software Máxima.\n\n\n```{bash,echo = FALSE,warnings = FALSE}\nmaxima -q -b ../../maximascript.mac  | sed '1,4d;$d'\n```\n\n",
+    "supporting": [
+      "maxima1_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}
