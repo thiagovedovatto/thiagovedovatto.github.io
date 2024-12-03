@@ -2,11 +2,15 @@
 #title: "Thiago VedoVatto"
 listing:
   contents: posts
+  feed: 
+    type: full
+    title: "feed rss do professor Thiago VedoVatto"
   sort: "date desc"
   type: default
   categories: false
   sort-ui: false
   filter-ui: false
+  
 page-layout: full
 title-block-banner: false
 ---

@@ -2,7 +2,7 @@
 title: "Principais bibliotecas de análise de dados do R"
 # author: "Harlow Malloc"
 # date: "2024-12-01"
-categories: [news, code, analysis]
+categories: [code, analysis,R]
 image: "image.jpg"
 ---
 

@@ -4,11 +4,16 @@ project:
 
 website:
   title: "Thiago VedoVatto"
+  site-url: "https://thiagovedovatto.github.io/"
   navbar:
     right:
-      - about.qmd
-      - icon: github
-        href: https://github.com/thiagovedovatto
+      - text: "Sobre"
+        href: about.qmd
+    page-footer:
+    center: 
+      - text: "Sobre"
+        href: about.qmd
+
 format:
   html:
     theme: default
