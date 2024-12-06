@@ -1,6 +1,6 @@
 ---
 title: "Usando o Maxima para analisar equações diferenciais"
-categories: [code,analysis,maxima]
+categories: [códigos,maxima]
 ---
 
 [![](maxima.svg)](https://maxima.sourceforge.io/pt/index.html)
@@ -13,7 +13,7 @@ Ainda é possível criar gráficos em 2D e 3D, facilitando a análise visual das
 A linguagem Maxima apresente alta precisão e flexibilidade numérica podendo fazer uso de frações exatas, números de precisão arbitrária e números de ponto flutuante com precisão variável, minimizando erros numéricos em cálculos sensíveis.
 
 Por ser de código aberto, o software Maxima é obtido de forma totalmente gratuito no seu [repositório oficial](https://maxima.sourceforge.io/pt/download.html) com versões disponíveis em múltiplos sistemas operacionais, como Windows, Linux e macOS, o que facilita seu acesso para estudantes.
-Além disso o Maxima possui uma [interface online](http://www.dma.ufv.br/maxima/index.php) hospedado nos servidores do Departamento de Matemática da Universidade Federal de Viçosa.
+Além disso o Maxima possui uma [interface online](http://www.dma.ufv.br/maxima/index.php) hospedada nos servidores do Departamento de Matemática da Universidade Federal de Viçosa.
 
 Aprender a usar o software Maxima capacita o estudante a resolver problemas complexos com eficiência, compreender conceitos abstratos por meio de exemplos práticos e se preparar para aplicações mais avançadas. Além disso, o acesso gratuito e a versatilidade da ferramenta tornam-na uma escolha ideal para projetos acadêmicos e estudos independentes.
 

@@ -10,7 +10,7 @@
 <atom:link href="https://thiagovedovatto.github.io/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.2.313</generator>
-<lastBuildDate>Tue, 03 Dec 2024 19:19:22 GMT</lastBuildDate>
+<lastBuildDate>Fri, 06 Dec 2024 15:44:37 GMT</lastBuildDate>
 <item>
   <title>Usando o Maxima para analisar equações diferenciais</title>
   <link>https://thiagovedovatto.github.io/posts/maxima/index.html</link>
@@ -95,11 +95,10 @@ ic1(%, x=0, y=2);</code></pre>
 </section>
 
  ]]></description>
-  <category>code</category>
-  <category>analysis</category>
+  <category>códigos</category>
   <category>maxima</category>
   <guid>https://thiagovedovatto.github.io/posts/maxima/index.html</guid>
-  <pubDate>Tue, 03 Dec 2024 19:19:22 GMT</pubDate>
+  <pubDate>Fri, 06 Dec 2024 15:44:37 GMT</pubDate>
   <media:content url="https://thiagovedovatto.github.io/posts/maxima/maxima.svg" medium="image" type="image/svg+xml"/>
 </item>
 <item>
@@ -266,11 +265,10 @@ argument.</code></pre>
 </section>
 
  ]]></description>
-  <category>code</category>
-  <category>analysis</category>
+  <category>códigos</category>
   <category>R</category>
   <guid>https://thiagovedovatto.github.io/posts/analise_mpg/index.html</guid>
-  <pubDate>Tue, 03 Dec 2024 19:19:22 GMT</pubDate>
+  <pubDate>Fri, 06 Dec 2024 15:44:37 GMT</pubDate>
   <media:content url="https://thiagovedovatto.github.io/posts/analise_mpg/image.jpg" medium="image" type="image/jpeg"/>
 </item>
 </channel>
